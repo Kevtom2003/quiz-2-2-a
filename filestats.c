@@ -43,12 +43,13 @@ int main(int argc, char *argv[])
     struct group *grp;
     //handle situation when usr does not enter a dir name
     if (argc != 2){
-        fprintf(stderr, "usage: ls directory_name");
+        fprintf(stderr, "usage: filestats directory_name\n");
         exit(-1);
     }
     //error handling for incorrect directory
     if ((dp = opendir(argv[1])) == NULL){
-        printf("can’t open %s", argv[1]);
+        fprintf(stderr, "can’t open %s\n", argv[1]);
+        exit(-1);
     }
         
     while ((dirp = readdir(dp)) != NULL){
